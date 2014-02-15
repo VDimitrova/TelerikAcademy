@@ -1,0 +1,27 @@
+namespace _01_04_Point
+{
+    using System;
+    using System.Collections.Generic;
+    public class PointMain
+    {
+        public static void Main()
+        {
+            StructurePoint3D point = new StructurePoint3D(1, 2, 3);
+            Console.WriteLine(point.ToString());
+            StructurePoint3D startPoint = StructurePoint3D.StartCoordinateSystem();
+            Console.WriteLine(startPoint.ToString());
+
+            double distance = DistanceBetweenPoints.CalculateDistance(point, startPoint);
+            Console.WriteLine(distance);
+
+            Path path = new Path();
+            path.AddPoint(point);
+            path.AddPoint(startPoint);
+            path.AddPoint(new StructurePoint3D(2, 2, 2));
+            path.Print();
+
+            PathStorage.SavePath(path);
+            PathStorage.LoadPath(path);
+        }
+    }
+}
